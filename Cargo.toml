@@ -1,12 +1,12 @@
 [package]
 name = "pseudo_encrypt"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["lloydmeta <lloydmeta@gmail.com>"]
 edition = "2018"
 description = "Provides a native-Rust generic implementation of Psql's pseudo_encrypt"
 license = "MIT"
 documentation = "https://docs.rs/pseudo_encrypt"
-repository = "https://github.com/lloydmeta/pseudo_encrypt"
+repository = "https://github.com/lloydmeta/pseudo_encrypt-rs"
 keywords = ["pseudo_encrypt", "Psql", "postgresql", "encrypt"]
 readme = "README.md"
 

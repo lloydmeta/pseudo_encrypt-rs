@@ -1,12 +1,64 @@
 //! This module provides a native-Rust generic implementation of the pseudo-random generator based
-//! on Postgresql's pseudo_encrypt
+//! on Postgresql's pseudo_encrypt.
 //!
-//! For more information, see https://wiki.postgresql.org/wiki/Pseudo_encrypt
+//! The implementation provided maps 1 to 1 wih the orgininal Psql implementation for 32-bit values
+//!
+//! # Example
+//! ```
+//! # use pseudo_encrypt::pseudo_encrypt;
+//! let input_expected: Vec<(i32, i32)> = vec![
+//!     (-10, -1270576520),
+//!     (-9, -236348969),
+//!     (-8, -1184061109),
+//!     (-7, -25446276),
+//!     (-6, -1507538963),
+//!     (-5, -518858927),
+//!     (-4, -1458116927),
+//!     (-3, -532482573),
+//!     (-2, -157973154),
+//!     (-1, -1105881908),
+//!     (0, 1777613459),
+//!     (1, 561465857),
+//!     (2, 436885871),
+//!     (3, 576481439),
+//!     (4, 483424269),
+//!     (5, 1905133426),
+//!     (6, 971249312),
+//!     (7, 1926833684),
+//!     (8, 735327624),
+//!     (9, 1731020007),
+//!     (10, 792482838),
+//! ];
+//! for (input, expected) in input_expected {
+//!     let r = pseudo_encrypt(input);
+//!     assert_eq!(expected, r);
+//! }
+//! ```
+//!
+//! Integers represented with more bits are also supported out of the box
+//!
+//! # Example
+//!
+//! ```
+//! # use pseudo_encrypt::pseudo_encrypt;
+//! let r = pseudo_encrypt(u128::MAX);
+//! assert_eq!(340282366920938384363736019365210866432, r);
+//! ```
+//!
+//! For more information, see [the Psql documentation for pseudo_encrypt](https://wiki.postgresql.org/wiki/Pseudo_encrypt)
 use std::ops::*;
 
 /// Function that acts as a pseudo-random generator of unique values. It produces an integer output
 /// that is uniquely associated to its integer input (by a mathematical permutation), but looks
 /// random at the same time, with zero collision
+///
+/// # Example
+///
+/// ```
+/// # use pseudo_encrypt::pseudo_encrypt;
+/// let r = pseudo_encrypt(u128::MAX);
+/// assert_eq!(340282366920938384363736019365210866432, r);
+/// ```
 #[inline]
 pub fn pseudo_encrypt<A>(a: A) -> A
 where

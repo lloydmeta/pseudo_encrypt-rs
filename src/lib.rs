@@ -1,7 +1,8 @@
 //! This module provides a native-Rust generic implementation of the pseudo-random generator based
 //! on Postgresql's pseudo_encrypt.
 //!
-//! The implementation provided maps 1 to 1 wih the orgininal Psql implementation for 32-bit values
+//! The [`pseudo_encrypt`](fn.pseudo_encrypt.html) implementation provided maps 1 to 1 wih the
+//! orgininal Psql implementation for 32-bit values
 //!
 //! # Example
 //! ```

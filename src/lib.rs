@@ -292,6 +292,24 @@ mod tests {
     }
 
     #[test]
+    fn test_test_pseudo_encrypt_self_inverse_u32() {
+        proptest!(|(u: u32)| {
+            let r = pseudo_encrypt(u);
+            let inverse_r = pseudo_encrypt(r);
+            prop_assert_eq!(u, inverse_r)
+        });
+    }
+
+    #[test]
+    fn test_test_pseudo_encrypt_self_inverse_i32() {
+        proptest!(|(u: i32)| {
+            let r = pseudo_encrypt(u);
+            let inverse_r = pseudo_encrypt(r);
+            prop_assert_eq!(u, inverse_r)
+        });
+    }
+
+    #[test]
     fn test_test_pseudo_encrypt_no_collisions_u32() {
         let seen_inputs_mutex = Mutex::new(HashSet::with_capacity(TEST_CASES as usize));
         let seen_results_mutex = Mutex::new(HashMap::with_capacity(TEST_CASES as usize));
@@ -329,6 +347,24 @@ mod tests {
     }
 
     #[test]
+    fn test_test_pseudo_encrypt_self_inverse_u64() {
+        proptest!(|(u: u64)| {
+            let r = pseudo_encrypt(u);
+            let inverse_r = pseudo_encrypt(r);
+            prop_assert_eq!(u, inverse_r)
+        });
+    }
+
+    #[test]
+    fn test_test_pseudo_encrypt_self_inverse_i64() {
+        proptest!(|(u: i64)| {
+            let r = pseudo_encrypt(u);
+            let inverse_r = pseudo_encrypt(r);
+            prop_assert_eq!(u, inverse_r)
+        });
+    }
+
+    #[test]
     fn test_test_pseudo_encrypt_no_collisions_i64() {
         let seen_inputs_mutex = Mutex::new(HashSet::with_capacity(TEST_CASES as usize));
         let seen_results_mutex = Mutex::new(HashMap::with_capacity(TEST_CASES as usize));
@@ -361,6 +397,24 @@ mod tests {
             let previous_input_for_result = seen_results.get(&r);
             prop_assert!(previous_input_for_result.is_none(), "Previous input [{:?}] yielded the same result [{}]", previous_input_for_result, r);
             seen_results.insert(r, u);
+        });
+    }
+
+    #[test]
+    fn test_test_pseudo_encrypt_self_inverse_u128() {
+        proptest!(|(u: u128)| {
+            let r = pseudo_encrypt(u);
+            let inverse_r = pseudo_encrypt(r);
+            prop_assert_eq!(u, inverse_r)
+        });
+    }
+
+    #[test]
+    fn test_test_pseudo_encrypt_self_inverse_i128() {
+        proptest!(|(u: i128)| {
+            let r = pseudo_encrypt(u);
+            let inverse_r = pseudo_encrypt(r);
+            prop_assert_eq!(u, inverse_r)
         });
     }
 

@@ -1,5 +1,5 @@
 ## pseudo_encrypt-rs 
-![pseudo_encrypt-rs-CI](https://github.com/lloydmeta/pseudo_encrypt-rs/workflows/Continuous%20integration/badge.svg?branch=main)
+[![pseudo_encrypt-rs-CI](https://github.com/lloydmeta/pseudo_encrypt-rs/workflows/Continuous%20integration/badge.svg?branch=main)](https://github.com/lloydmeta/pseudo_encrypt-rs/actions?query=branch%3Amain)
 [![pseudo_encrypt](https://docs.rs/pseudo_encrypt/badge.svg)](https://docs.rs/pseudo_encrypt)
 [![Crates.io](https://img.shields.io/crates/v/pseudo_encrypt.svg)](https://crates.io/crates/pseudo_encrypt)
 
